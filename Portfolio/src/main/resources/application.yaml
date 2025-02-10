@@ -1,0 +1,30 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:local-ssl.p12
+    key-store-password: portfolio
+    key-store-type: PKCS12
+    key-alias: local_ssl
+
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOSTNAME:localhost}:${DB_PORT:5436}/postgres
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 3
+  security:
+    jwt-secret-key: UG9ydGZvbGlvQXBwU2VjcmV0S2V5TW9yZUxvbmdMb25n
+    user:
+      name: " "
+      password: " "
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
