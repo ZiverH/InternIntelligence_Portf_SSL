@@ -25,19 +25,15 @@ public class AuthRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        log.info("AuthRequestFilter invoked for URI: {}", request.getRequestURI());
-        log.info("Authorization Header: {}", request.getHeader("Authorization"));
 
 
         Optional<Authentication> authOptional = Optional.empty();
         for (AuthService authService : authServices){
             authOptional =authService.getAuthentication(request);
-            log.info("Authentication from service {}: {}", authService.getClass().getSimpleName(), authOptional.orElse(null));
 
         }
         authOptional.ifPresent(auth-> {
             SecurityContextHolder.getContext().setAuthentication(auth);
-            log.info("Setting Authentication in SecurityContext: {}", auth);
 
         });
         filterChain.doFilter(request,response);
