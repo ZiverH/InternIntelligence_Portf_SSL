@@ -36,17 +36,6 @@ public class SecurityConfig {
 
 
 
-//        http.authorizeHttpRequests(auth->
-//                auth.requestMatchers(HttpMethod.DELETE, "/api/v1/flight/*").hasAnyAuthority("OPERATOR", "ADMIN")
-//                        .requestMatchers( "/api/v1/flight/createFlight").hasAnyAuthority("OPERATOR", "ADMIN")
-//                        .requestMatchers(HttpMethod.PUT, "/api/v1/flight/*/status").hasAnyAuthority( "ADMIN")
-//                        .requestMatchers( "/api/v1/passenger/**").hasAnyAuthority("OPERATOR", "ADMIN")
-//                        .requestMatchers(HttpMethod.PUT, "/api/v1/ticket/*").hasAnyAuthority("OPERATOR", "ADMIN")
-//                        .requestMatchers( "/api/v1/ticket/createTicket").hasAnyAuthority("OPERATOR", "ADMIN")
-//                        .requestMatchers( "/swagger-ui/**").permitAll()
-//                        .requestMatchers( "/api/v1/**").authenticated()
-//                        .anyRequest().permitAll());
-
         return http.build();
     }
 }
